@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import theme from "../globals/themes";
 import Clock from 'react-live-clock';
-
+import settingsSnd from '../assets/sound/Settings.wav'
 
 const HeaderBar = styled.header`
 width: 100%;
@@ -23,7 +23,7 @@ cursor: pointer;
 transition: opacity .4s;
 
  &:hover {
-   animation: wiggle .4s ease-in-out forwards;
+   animation: wiggle .3s ease-in-out forwards;
    opacity: 0.8;
 }
 
@@ -40,7 +40,7 @@ cursor: pointer;
 margin: 0 2rem;
 transition: opacity .4s;
  &:hover {
-   animation: wiggle .4s ease-in-out forwards;
+   animation: wiggle .3s ease-in-out forwards;
    opacity: 0.8;
 `;
 
@@ -60,17 +60,22 @@ padding: 2rem
 class Header extends Component {
     constructor(props) {
         super(props);
+        this.soundRef = React.createRef();
     }
 
+    playSettingsJingle() {
+        const node = this.soundRef.current;
+        node.play();
+    }
     render() {
         return (
             <HeaderBar className={"header"}>
-
+                <audio ref={this.soundRef} src={settingsSnd}/>
                 <FlexItem className= {"flex-item"} justify={"flex-start"}>
                     <ProfileIcon iconColor={theme.secondary.standardIcon}>
-                        <i className="material-icons">person</i>
+                        <i className="material-icons">account_circle</i>
                     </ProfileIcon>
-                    <SettingsIcon  className="material-icons" iconColor={theme.secondary.lightBlue}>settings</SettingsIcon>
+                    <SettingsIcon  className="material-icons" onMouseOver={() => this.playSettingsJingle()}  iconColor={theme.secondary.lightBlue}>settings</SettingsIcon>
                 </FlexItem>
                 <FlexItem className= {"flex-item"} justify={"flex-end"}>
                     <ClockComp>         <Clock format={'HH:mm'} ticking={true} timezone={'Europe/Oslo'} />
