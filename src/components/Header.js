@@ -65,9 +65,11 @@ class Header extends Component {
 
     playSettingsJingle() {
         const node = this.soundRef.current;
+
         node.play();
     }
     render() {
+        
         return (
             <HeaderBar className={"header"}>
                 <audio ref={this.soundRef} src={settingsSnd}/>
@@ -75,7 +77,7 @@ class Header extends Component {
                     <ProfileIcon iconColor={theme.secondary.standardIcon}>
                         <i className="material-icons">account_circle</i>
                     </ProfileIcon>
-                    <SettingsIcon  className="material-icons" onMouseOver={() => this.playSettingsJingle()}  iconColor={theme.secondary.lightBlue}>settings</SettingsIcon>
+                    <SettingsIcon  className="material-icons" onClick={() => this.playSettingsJingle()}  iconColor={theme.secondary.lightBlue}>settings</SettingsIcon>
                 </FlexItem>
                 <FlexItem className= {"flex-item"} justify={"flex-end"}>
                     <ClockComp>         <Clock format={'HH:mm'} ticking={true} timezone={'Europe/Oslo'} />
