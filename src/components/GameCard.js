@@ -1,19 +1,27 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import theme from "../globals/themes";
+import constants from "../globals/constants"
 import gameSnd from "../assets/sound/OpenGame.wav";
 
 
 const GameCardDiv = styled.div`
 min-width: 24rem;
-height: 24rem;
-border-radius: ${theme.constants.cardRadius}px;
+min-height: 24rem;
+border-radius: ${constants.cardRadius};
 margin: 2rem .5rem;
-box-shadow: ${theme.constants.boxShadow};
+box-shadow: ${constants.boxShadow};
 background-image: url(${props => props.imgUrl});
 background-color: ${theme.background.paper};
 transition: all .15s ease-in-out;
 background-position: center;
+background-size: cover;
+    
+  @media ${constants.device.mobileL} {
+    min-width: 18rem;
+    min-height: 18rem;
+}
+
 ${props => props.loading ? `animation: loading 1s ease-in-out infinite;` :``};
 ${props => props.cardClicked ? `animation: select 0.5s ease-in-out forwards;\`` :``};
 
@@ -21,7 +29,7 @@ ${props => props.cardClicked ? `animation: select 0.5s ease-in-out forwards;\`` 
 ${props => props.gameId ? `
 cursor: pointer;
 &:hover {
-box-shadow: ${theme.constants.boxShadowHover};
+box-shadow: ${constants.boxShadowHover};
 
 transform: scale(1.02);
 opacity: 0.9;

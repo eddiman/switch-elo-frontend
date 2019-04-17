@@ -5,6 +5,7 @@ import switchImg from "../assets/img/switchlogo.svg";
 import styled from "styled-components";
 import Footer from "../components/Footer";
 import config from "../globals/config";
+import constants from "../globals/constants";
 
 const GameCardSection = styled.div`
 display:flex;
@@ -13,6 +14,11 @@ align-items: center;
 overflow:scroll;
 margin: 4rem 0;
 padding-left: 4rem;
+  @media ${constants.device.tablet} {
+    flex-direction: column;
+    padding: 0;
+    align-items: center;
+}
  `;
 
 class Home extends Component {

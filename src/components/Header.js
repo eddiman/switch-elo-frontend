@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import theme from "../globals/themes";
 import Clock from 'react-live-clock';
 import settingsSnd from '../assets/sound/Settings.wav'
+import constants from "../globals/constants";
 
 const HeaderBar = styled.header`
 width: 100%;
@@ -22,6 +23,11 @@ align-items: center;
 cursor: pointer;
 transition: opacity .4s;
 
+  @media ${constants.device.mobileL} {
+    height: 3rem;
+    width: 3rem;
+}
+
  &:hover {
    animation: wiggle .3s ease-in-out forwards;
    opacity: 0.8;
@@ -39,6 +45,10 @@ font-size: 2rem;
 cursor: pointer;
 margin: 0 2rem;
 transition: opacity .4s;
+  @media ${constants.device.mobileL} {
+    margin: 0 1rem;
+
+}
  &:hover {
    animation: wiggle .3s ease-in-out forwards;
    opacity: 0.8;
@@ -48,6 +58,9 @@ const ClockComp = styled.span`
 font-size: 3.5rem;
 font-weight: 300;
 color: ${theme.text.standardText}
+  @media ${constants.device.mobileL} {
+    font-size: 2.5rem;
+}
 `;
 
 const FlexItem = styled.div`
@@ -55,7 +68,10 @@ display:flex;
 flex: 1;
 justify-content: ${props => props.justify};
 align-items: center;
-padding: 2rem
+padding: 2rem;
+  @media ${constants.device.mobileL} {
+    padding: 1rem;
+}
 `;
 class Header extends Component {
     constructor(props) {
@@ -69,7 +85,7 @@ class Header extends Component {
         node.play();
     }
     render() {
-        
+
         return (
             <HeaderBar className={"header"}>
                 <audio ref={this.soundRef} src={settingsSnd}/>

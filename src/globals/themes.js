@@ -20,14 +20,9 @@ let themes = {
         text: {
             standardText: "#535353",
         },
-        constants : {
-            cardRadius: 18,
-            boxShadow: "0 2px 10px 0 rgba(0,0,0,0.15), 0 2px 10px 0 rgba(0,0,0,0.1)",
-            boxShadowHover: "0 9px 10px 1px rgba(0,0,0,0.2), 0 9px 10px 0 rgba(0,0,0,0.1)",
-            
-        }
         
-    }
+    },
+
 };
 
 export default themes.lightTheme;

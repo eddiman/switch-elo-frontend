@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import theme from "../globals/themes";
 import Clock from 'react-live-clock';
+import constants from "../globals/constants";
 
 
 const FooterBar = styled.footer`
@@ -13,6 +14,9 @@ position: fixed;
 bottom: 0;
 display: flex;
 justify-content: center;
+  @media ${constants.device.tablet} {
+    height: 4rem;
+  }
 `;
 
 const FooterButton = styled.div`
@@ -25,6 +29,13 @@ display: flex;
 justify-content: center;
 align-items: center;
 
+  @media ${constants.device.tablet} {
+    height: 5rem;
+    width: 5rem;
+    margin-top: -2.5rem;
+
+  }
+
 div {
 height: 5rem;
 width: 5rem;
@@ -33,14 +44,18 @@ border-radius: 50%;
 display: flex;
 justify-content: center;
 align-items: center;
-box-shadow: ${theme.constants.boxShadow};
+box-shadow: ${constants.boxShadow};
 cursor: pointer;
 transition: all .15s ease-in-out;
+  @media ${constants.device.tablet} {
+    height: 4rem;
+    width: 4rem;
+  }
 
 &:hover {
 transform: scale(1.02);
 opacity: 0.9;
-box-shadow: ${theme.constants.boxShadow};
+box-shadow: ${constants.boxShadow};
 
 i {
 opacity: 0.8;
