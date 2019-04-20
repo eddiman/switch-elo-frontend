@@ -9,12 +9,13 @@ const FooterBar = styled.footer`
 width: 100%;
 display: flex;
 background-color: ${theme.background.paper};
-height: 8rem;
+height: 5rem;
 position: fixed;
 bottom: 0;
 display: flex;
 justify-content: center;
-  @media ${constants.device.tablet} {
+z-index: 100;
+  @media ${constants.device.tablet}, ${constants.device.customHeight}  {
     height: 4rem;
   }
 `;
@@ -29,11 +30,10 @@ display: flex;
 justify-content: center;
 align-items: center;
 
-  @media ${constants.device.tablet} {
+  @media ${constants.device.tablet}  {
     height: 5rem;
     width: 5rem;
     margin-top: -2.5rem;
-
   }
 
 div {
@@ -44,7 +44,7 @@ border-radius: 50%;
 display: flex;
 justify-content: center;
 align-items: center;
-box-shadow: ${constants.boxShadow};
+box-shadow: ${theme.other.boxShadow};
 cursor: pointer;
 transition: all .15s ease-in-out;
   @media ${constants.device.tablet} {
@@ -55,11 +55,9 @@ transition: all .15s ease-in-out;
 &:hover {
 transform: scale(1.02);
 opacity: 0.9;
-box-shadow: ${constants.boxShadow};
+box-shadow: ${theme.other.boxShadow};
 
-i {
-opacity: 0.8;
-    }
+i {opacity: 0.8;}
 }
 
 i {

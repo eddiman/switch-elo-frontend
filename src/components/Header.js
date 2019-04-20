@@ -45,6 +45,7 @@ font-size: 2rem;
 cursor: pointer;
 margin: 0 2rem;
 transition: opacity .4s;
+user-select: none;
   @media ${constants.device.mobileL} {
     margin: 0 1rem;
 
