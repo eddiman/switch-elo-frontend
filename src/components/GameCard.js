@@ -23,7 +23,7 @@ content:'${props => props.gameName}';
    background: ${theme.other.hoverGradient};
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: gradient 5s ease infinite;
+  animation: gradient 3s ease infinite;
   background-size: 900% 900%;
   margin: 1rem 0 0 0.5rem;
   font-weight: 300;

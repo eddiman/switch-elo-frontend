@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import theme from "../globals/themes";
-import Clock from 'react-live-clock';
 import constants from "../globals/constants";
+import {CSSTransition} from "react-transition-group";
 
 
 const FooterBar = styled.footer`
@@ -68,19 +68,18 @@ transition: all .15s ease-in-out;
 }
 `;
 class Footer extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
-            <FooterBar className={"footer"}>
-                <FooterButton iconColor={theme.secondary.lightRed}>
-                    <div>
-                        <i className="material-icons">line_weight</i>
-                    </div>
-                </FooterButton>
-            </FooterBar>
+            <CSSTransition appear={true} in={true} timeout={200} classNames="slide-up">
+
+                <FooterBar className={"footer"}>
+                    <FooterButton iconColor={theme.secondary.lightRed}>
+                        <div>
+                            <i className="material-icons">line_weight</i>
+                        </div>
+                    </FooterButton>
+                </FooterBar>
+            </CSSTransition>
         );
     }
 }

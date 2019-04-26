@@ -1,17 +1,74 @@
-.example-enter {
-  opacity: 0.01;
+.game-card-section-enter {
+  opacity: 0;
 }
-
-.example-enter.example-enter-active {
+.game-card-section-enter-active {
   opacity: 1;
-  transition: opacity 500ms ease-in;
+  transition: opacity 400ms;
 }
-
-.example-leave {
+.game-card-section-exit {
   opacity: 1;
 }
+.game-card-section-exit-active {
+  opacity: 0;
+  transition: opacity 400ms;
+}
+/***********************************************/
 
-.example-leave.example-leave-active {
-  opacity: 0.01;
-  transition: opacity 300ms ease-in;
+.slide-down-appear {
+  opacity: 0;
+  transform: translateY(-1rem);
+}
+.slide-down-appear-done {
+  opacity: 1;
+  transform: translateY(0rem);
+  transition: all 400ms;
+}
+.slide-down-enter-done {
+  opacity: 1;
+  transform: translateY(0rem);
+  transition: all 400ms;
+}
+.slide-down-exit {
+  opacity: 1;
+  transform: translateY(0rem);
+}
+.slide-down-exit-done {
+  opacity: 0;
+  transform: translateY(-1rem);
+  transition: opacity 400ms;
+}
+/***********************************************/
+
+.slide-up-appear {
+  opacity: 0;
+  transform: translateY(1rem);
+}
+.slide-up-appear-done {
+  opacity: 1;
+  transform: translateY(0rem);
+  transition: all 400ms;
+}
+.slide-up-enter-done {
+  opacity: 1;
+  transform: translateY(0rem);
+  transition: all 400ms;
+}
+.slide-up-exit {
+  opacity: 1;
+  transform: translateY(0rem);
+}
+.slide-up-exit-done {
+  opacity: 0;
+  transform: translateY(1rem);
+  transition: opacity 400ms;
+}
+/***********************************************/
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit.fade-exit-active {
+  opacity: 0;
+  transition: all 600ms ease-in;
 }

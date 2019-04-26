@@ -7,7 +7,8 @@ import Footer from "../components/Footer";
 import config from "../globals/config";
 import constants from "../globals/constants";
 import theme from "../globals/themes";
-import {CSSTransitionGroup} from 'react-transition-group'
+import {CSSTransition} from 'react-transition-group'
+
 //🐥🐇
 
 
@@ -73,7 +74,7 @@ class Home extends Component {
         console.log(this.state.games);
 
         const gameCards = Object.keys(games).map(key =>
-            <GameCard key={key} loading={!this.state.isLoading} gameName={games[key].gameName} imgUrl={games[key].imgUrl !== undefined ? games[key].imgUrl : switchImg} gameId={key} history= {this.props.history}/>
+            <GameCard key={key} loading={this.state.isLoading} gameName={games[key].gameName} imgUrl={games[key].imgUrl !== undefined ? games[key].imgUrl : switchImg} gameId={key} history= {this.props.history}/>
         );
 
 
@@ -81,48 +82,29 @@ class Home extends Component {
 
         return (
             <HomeSection className="Home">
+                <Header/>
+                <CSSTransition in={!this.state.isLoading} timeout={400} classNames="game-card-section">
+                    <GameCardSection key={"Gs1"} className={"GameCardSection"}>
+                        {gameCards}
+                        {!this.state.isLoading ?
+                            <div className={"flex-row"}>
+                                <GameCard key={"empty-card-1"} loading={false}/>
+                                <GameCard key={"empty-card-2"} loading={false}/>
+                                <GameCard key={"empty-card-3"} loading={false}/>
+                                <GameCard key={"empty-card-4"} loading={false}/>
+                            </div>
+                            : ""
+                        }
+                    </GameCardSection>
+                </CSSTransition>
 
-                <Header title={"Yeah man"}/>
-                {!this.state.isLoading ?
-                    <CSSTransitionGroup transitionName="example"
-                                        transitionAppear={true}
-                                        transitionAppearTimeout={500}
-                                        transitionEnter={false}
-                                        transitionLeave={false}>
-                        <GameCardSection className={"GameCardSection"}>
-                            {gameCards}
-                            <GameCard/>
-                            <GameCard/>
-                            <GameCard/>
-                            <GameCard/>
-                            <GameCard/>
-                        </GameCardSection>
-                    </CSSTransitionGroup>
 
-                    :
-                    <GameCardSection className={"GameCardSection"}>
 
-                    </GameCardSection>}
+
+
                 <Footer/>
             </HomeSection>
-        );        /*return (
-            <HomeSection className="Home">
-
-                <Header title={"Yeah man"}/>
-                    <CSSTransitionGroup in={!this.state.isLoading} timeout={200} classNames="my-node">
-                        <GameCardSection className={"GameCardSection"}>
-                            {gameCards}
-                            <GameCard/>
-                            <GameCard/>
-                            <GameCard/>
-                            <GameCard/>
-                            <GameCard/>
-                        </GameCardSection>
-                    </CSSTransitionGroup>
-        
-                <Footer/>
-            </HomeSection>
-        );*/
+        );
     }
 }
 

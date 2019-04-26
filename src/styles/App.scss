@@ -10,6 +10,7 @@ body {
 
 h1, h2, h3, h4, h5, h6, p , span {
   font-family: 'Roboto', sans-serif;
+  font-weight: 300;
 }
 h1 {
   font-size: 2.5rem;
@@ -41,6 +42,19 @@ i {
   user-select: none;
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  height: inherit;
+}
+
+.flex-row{
+  display: flex;
+  flex-direction: row;
+  @media screen and (max-width: 768px) {
+      flex-direction: column;
+  }
+}
 @-webkit-keyframes wiggle {
   0% {-webkit-transform: rotate(0deg);}
   25% {-webkit-transform: rotate(-10deg);}
@@ -72,13 +86,4 @@ i {
 @-webkit-keyframes select {
   0% { -webkit-transform: scale(1.05); }
   100% { -webkit-transform: translate(1.02px) }
-}
-
-.example-appear {
-  opacity: 0.01;
-}
-
-.example-appear.example-appear-active {
-  opacity: 1;
-  transition: opacity .5s ease-in;
 }

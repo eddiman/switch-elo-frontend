@@ -1,15 +1,17 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import styled from 'styled-components';
 import theme from "../globals/themes";
 import Clock from 'react-live-clock';
 import settingsSnd from '../assets/sound/Settings.wav'
 import constants from "../globals/constants";
+import {CSSTransition} from "react-transition-group";
 
 const HeaderBar = styled.header`
 width: 100%;
 display: flex;
 border-bottom 1px solid ${theme.secondary.standardIcon};
 background-color: ${theme.background.base};
+
 `;
 
 const ProfileIcon = styled.div`
@@ -88,19 +90,22 @@ class Header extends Component {
     render() {
 
         return (
-            <HeaderBar className={"header"}>
-                <audio ref={this.soundRef} src={settingsSnd}/>
-                <FlexItem className= {"flex-item"} justify={"flex-start"}>
-                    <ProfileIcon iconColor={theme.secondary.standardIcon}>
-                        <i className="material-icons">account_circle</i>
-                    </ProfileIcon>
-                    <SettingsIcon  className="material-icons" onClick={() => this.playSettingsJingle()}  iconColor={theme.secondary.lightBlue}>settings</SettingsIcon>
-                </FlexItem>
-                <FlexItem className= {"flex-item"} justify={"flex-end"}>
-                    <ClockComp>         <Clock format={'HH:mm'} ticking={true} timezone={'Europe/Oslo'} />
-                    </ClockComp>
-                </FlexItem>
-            </HeaderBar>
+                <CSSTransition appear={true} in={true} timeout={200} classNames="slide-down">
+
+                    <HeaderBar key={"header"} className={"header"}>
+                        <audio ref={this.soundRef} src={settingsSnd}/>
+                        <FlexItem className= {"flex-item"} justify={"flex-start"}>
+                            <ProfileIcon iconColor={theme.secondary.standardIcon}>
+                                <i className="material-icons">account_circle</i>
+                            </ProfileIcon>
+                            <SettingsIcon  className="material-icons" onClick={() => this.playSettingsJingle()}  iconColor={theme.secondary.lightBlue}>settings</SettingsIcon>
+                        </FlexItem>
+                        <FlexItem className= {"flex-item"} justify={"flex-end"}>
+                            <ClockComp>         <Clock format={'HH:mm'} ticking={true} timezone={'Europe/Oslo'} />
+                            </ClockComp>
+                        </FlexItem>
+                    </HeaderBar>
+                </CSSTransition>
         );
     }
 }
